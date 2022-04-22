@@ -4,19 +4,19 @@ export default () => ({
     isLoading: true,
     entries: [
         {
-            id: new Date().getTime(),
+            id: '1',
             date: new Date().toDateString(),
-            text: 'Loremo wefwer wefwrgppw commodo',
+            text: 'Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo Loremo wefwer wefwrgppw commodo',
             picture: null
         },
         {
-            id: new Date().getTime() + 1000,
+            id: '2',
             date: new Date().toDateString(),
             text: 'Quiubo pues quioes ieubuer erighiwepo',
             picture: null
         },
         {
-            id: new Date().getTime() + 2000,
+            id: '3',
             date: new Date().toDateString(),
             text: 'en esa rjkne 0wergf ohowefwe',
             picture: null
