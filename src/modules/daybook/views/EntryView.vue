@@ -32,20 +32,19 @@
     />
   </template>
 
-  <FabButton icon="fa-save" />
-  
+  <FabButton @on:click="saveEntry" icon="fa-save" />
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import getDayMonthYear from "../helpers/getDayMonthYear";
 
 export default {
   props: {
     id: {
-      type: String,
+      type: [Number, String],
       required: true,
     },
   },
@@ -60,11 +59,33 @@ export default {
     ),
   },
   methods: {
+    ...mapActions("journal", ["updateEntry", "createEntry"]),
+
     loadEntry() {
-      const entry = this.getEntryById(this.id);
-      if (!entry) return this.$router.push({ name: "no-entry" });
+      let entry;
+      if (this.id === 0) {
+        
+        entry = {
+          text: '',
+          date: new Date().getTime()
+        }
+
+      } else {
+        entry = this.getEntryById(this.id);
+        if (!entry) return this.$router.push({ name: "no-entry" });
+      }
 
       this.entry = entry;
+    },
+    async saveEntry() {
+      
+      if( this.entry.id ) {
+        await this.updateEntry(this.entry)
+      } else {
+        const id = await this.createEntry(this.entry)
+        console.log(id)
+        this.$router.push({ name: "entry", params: { id }})
+      }
     },
   },
   created() {

@@ -16,10 +16,9 @@ export default {
     {
       path: ":id",
       name: "entry",
-      props: ( route ) => {
-        return {
-          id: route.params.id
-        }
+      props: ( route ) => {  
+        const id = Number(route.params.id)
+        return { id }      
       },
       component: () =>
         import(

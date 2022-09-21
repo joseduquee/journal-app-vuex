@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     shorText() {
-      return ( this.entry.text.length > 130) ?
+      return ( this.entry.text?.length > 130) ?
         this.entry.text.substring(0, 130) + '...' : this.entry.text
     },
     day() {
